@@ -71,5 +71,13 @@ namespace SquadHub
                 medForm.ShowDialog();
             }
         }
+
+        private void btnMatch_Click(object sender, EventArgs e)
+        {
+            using (MatchForm matchForm = new MatchForm())
+            {
+                matchForm.ShowDialog();
+            }
+        }
     }
 }
