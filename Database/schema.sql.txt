@@ -1,0 +1,59 @@
+CREATE DATABASE SquadHubDB;
+GO
+
+USE SquadHubDB;
+GO
+
+CREATE TABLE Players (
+    PlayerID INT IDENTITY(1,1) PRIMARY KEY,
+    FullName NVARCHAR(100) NOT NULL,
+    DOB DATE NOT NULL,
+    OvrRating INT CHECK (OvrRating BETWEEN 1 AND 99),
+    PositionCode NVARCHAR(5) NOT NULL
+);
+
+CREATE TABLE Tactics (
+    TacticID INT IDENTITY(1,1) PRIMARY KEY,
+    FormationName NVARCHAR(20) NOT NULL -- наприклад, '4-3-3'
+);
+
+CREATE TABLE Matches (
+    MatchID INT IDENTITY(1,1) PRIMARY KEY,
+    OpponentName NVARCHAR(50) NOT NULL,
+    MatchDate DATETIME NOT NULL,
+    TacticID INT,
+    FOREIGN KEY (TacticID) REFERENCES Tactics(TacticID) ON DELETE SET NULL
+);
+
+CREATE TABLE Contracts (
+    ContractID INT IDENTITY(1,1) PRIMARY KEY,
+    PlayerID INT NOT NULL,
+    WageWeekly DECIMAL(10,2) CHECK (WageWeekly >= 0),
+    ContractStart DATE NOT NULL,
+    ContractEnd DATE NOT NULL,
+    ReleaseClause DECIMAL(12,2) CHECK (ReleaseClause >= 0),
+    FOREIGN KEY (PlayerID) REFERENCES Players(PlayerID) ON DELETE CASCADE,
+    CHECK (ContractEnd > ContractStart)
+);
+
+CREATE TABLE Medical (
+    RecordID INT IDENTITY(1,1) PRIMARY KEY,
+    PlayerID INT NOT NULL,
+    InjuryType NVARCHAR(50) NOT NULL,
+    InjuryDate DATE NOT NULL,
+    RecoveryDate DATE,
+    FOREIGN KEY (PlayerID) REFERENCES Players(PlayerID) ON DELETE CASCADE,
+    CHECK (RecoveryDate >= InjuryDate)
+);
+
+CREATE TABLE Stats (
+    StatID INT IDENTITY(1,1) PRIMARY KEY,
+    MatchID INT NOT NULL,
+    PlayerID INT NOT NULL,
+    MinutesPlayed INT DEFAULT 0 CHECK (MinutesPlayed BETWEEN 0 AND 120),
+    GoalsScored INT DEFAULT 0 CHECK (GoalsScored >= 0),
+    YellowCards INT DEFAULT 0 CHECK (YellowCards BETWEEN 0 AND 2),
+    RedCards INT DEFAULT 0 CHECK (RedCards BETWEEN 0 AND 1),
+    FOREIGN KEY (MatchID) REFERENCES Matches(MatchID) ON DELETE CASCADE,
+    FOREIGN KEY (PlayerID) REFERENCES Players(PlayerID) ON DELETE CASCADE
+);
