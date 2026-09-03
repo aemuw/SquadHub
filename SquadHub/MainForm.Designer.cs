@@ -20,83 +20,108 @@
 
         private void InitializeComponent()
         {
-            this.dgvPlayers = new System.Windows.Forms.DataGridView();
-            this.btnLoadPlayers = new System.Windows.Forms.Button();
-            this.btnAddPlayer = new System.Windows.Forms.Button();
-            this.topPanel = new System.Windows.Forms.Panel();
-            this.lblTitle = new System.Windows.Forms.Label();
-
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPlayers)).BeginInit();
-            this.topPanel.SuspendLayout();
-            this.SuspendLayout();
-
-            // topPanel
-            this.topPanel.Controls.Add(this.lblTitle);
-            this.topPanel.Controls.Add(this.btnAddPlayer);
-            this.topPanel.Controls.Add(this.btnLoadPlayers);
-            this.topPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.topPanel.Location = new System.Drawing.Point(0, 0);
-            this.topPanel.Name = "topPanel";
-            this.topPanel.Size = new System.Drawing.Size(800, 60);
-            this.topPanel.TabIndex = 0;
-
-            // lblTitle
-            this.lblTitle.AutoSize = true;
-            this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblTitle.Location = new System.Drawing.Point(12, 15);
-            this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(184, 30);
-            this.lblTitle.TabIndex = 1;
-            this.lblTitle.Text = "Склад Команди";
-
-            // btnAddPlayer
-            this.btnAddPlayer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAddPlayer.Location = new System.Drawing.Point(460, 15);
-            this.btnAddPlayer.Name = "btnAddPlayer";
-            this.btnAddPlayer.Size = new System.Drawing.Size(150, 35);
-            this.btnAddPlayer.TabIndex = 2;
-            this.btnAddPlayer.Text = "Додати гравця";
-            this.btnAddPlayer.UseVisualStyleBackColor = true;
-            this.btnAddPlayer.Click += new System.EventHandler(this.btnAddPlayer_Click);
-
-            // btnLoadPlayers
-            this.btnLoadPlayers.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnLoadPlayers.Location = new System.Drawing.Point(620, 15);
-            this.btnLoadPlayers.Name = "btnLoadPlayers";
-            this.btnLoadPlayers.Size = new System.Drawing.Size(150, 35);
-            this.btnLoadPlayers.TabIndex = 0;
-            this.btnLoadPlayers.Text = "Оновити список";
-            this.btnLoadPlayers.UseVisualStyleBackColor = true;
-            this.btnLoadPlayers.Click += new System.EventHandler(this.btnLoadPlayers_Click);
-
+            dgvPlayers = new DataGridView();
+            btnLoadPlayers = new Button();
+            btnAddPlayer = new Button();
+            topPanel = new Panel();
+            lblTitle = new Label();
+            btnMedical = new Button();
+            ((System.ComponentModel.ISupportInitialize)dgvPlayers).BeginInit();
+            topPanel.SuspendLayout();
+            SuspendLayout();
+            // 
             // dgvPlayers
-            this.dgvPlayers.AllowUserToAddRows = false;
-            this.dgvPlayers.AllowUserToDeleteRows = false;
-            this.dgvPlayers.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvPlayers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPlayers.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvPlayers.Location = new System.Drawing.Point(0, 60);
-            this.dgvPlayers.Name = "dgvPlayers";
-            this.dgvPlayers.ReadOnly = true;
-            this.dgvPlayers.RowTemplate.Height = 25;
-            this.dgvPlayers.Size = new System.Drawing.Size(800, 390);
-            this.dgvPlayers.TabIndex = 1;
-
+            // 
+            dgvPlayers.AllowUserToAddRows = false;
+            dgvPlayers.AllowUserToDeleteRows = false;
+            dgvPlayers.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvPlayers.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvPlayers.Dock = DockStyle.Fill;
+            dgvPlayers.Location = new Point(0, 80);
+            dgvPlayers.Margin = new Padding(3, 4, 3, 4);
+            dgvPlayers.Name = "dgvPlayers";
+            dgvPlayers.ReadOnly = true;
+            dgvPlayers.RowHeadersWidth = 51;
+            dgvPlayers.RowTemplate.Height = 25;
+            dgvPlayers.Size = new Size(914, 520);
+            dgvPlayers.TabIndex = 1;
+            // 
+            // btnLoadPlayers
+            // 
+            btnLoadPlayers.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnLoadPlayers.Location = new Point(709, 20);
+            btnLoadPlayers.Margin = new Padding(3, 4, 3, 4);
+            btnLoadPlayers.Name = "btnLoadPlayers";
+            btnLoadPlayers.Size = new Size(171, 47);
+            btnLoadPlayers.TabIndex = 0;
+            btnLoadPlayers.Text = "Оновити список";
+            btnLoadPlayers.UseVisualStyleBackColor = true;
+            btnLoadPlayers.Click += btnLoadPlayers_Click;
+            // 
+            // btnAddPlayer
+            // 
+            btnAddPlayer.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnAddPlayer.Location = new Point(526, 20);
+            btnAddPlayer.Margin = new Padding(3, 4, 3, 4);
+            btnAddPlayer.Name = "btnAddPlayer";
+            btnAddPlayer.Size = new Size(171, 47);
+            btnAddPlayer.TabIndex = 2;
+            btnAddPlayer.Text = "Додати гравця";
+            btnAddPlayer.UseVisualStyleBackColor = true;
+            btnAddPlayer.Click += btnAddPlayer_Click;
+            // 
+            // topPanel
+            // 
+            topPanel.Controls.Add(btnMedical);
+            topPanel.Controls.Add(lblTitle);
+            topPanel.Controls.Add(btnAddPlayer);
+            topPanel.Controls.Add(btnLoadPlayers);
+            topPanel.Dock = DockStyle.Top;
+            topPanel.Location = new Point(0, 0);
+            topPanel.Margin = new Padding(3, 4, 3, 4);
+            topPanel.Name = "topPanel";
+            topPanel.Size = new Size(914, 80);
+            topPanel.TabIndex = 0;
+            // 
+            // lblTitle
+            // 
+            lblTitle.AutoSize = true;
+            lblTitle.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
+            lblTitle.Location = new Point(14, 20);
+            lblTitle.Name = "lblTitle";
+            lblTitle.Size = new Size(226, 37);
+            lblTitle.TabIndex = 1;
+            lblTitle.Text = "Склад Команди";
+            // 
+            // btnMedical
+            // 
+            btnMedical.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnMedical.Location = new Point(349, 21);
+            btnMedical.Margin = new Padding(3, 4, 3, 4);
+            btnMedical.Name = "btnMedical";
+            btnMedical.Size = new Size(171, 47);
+            btnMedical.TabIndex = 3;
+            btnMedical.Text = "Лазарет";
+            btnMedical.UseVisualStyleBackColor = true;
+            btnMedical.Click += btnMedical_Click;
+            // 
             // MainForm
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.dgvPlayers);
-            this.Controls.Add(this.topPanel);
-            this.Name = "MainForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "SquadHub - Football Manager";
-            this.Load += new System.EventHandler(this.MainForm_Load);
-
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPlayers)).EndInit();
-            this.topPanel.ResumeLayout(false);
-            this.topPanel.PerformLayout();
-            this.ResumeLayout(false);
+            // 
+            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(914, 600);
+            Controls.Add(dgvPlayers);
+            Controls.Add(topPanel);
+            Margin = new Padding(3, 4, 3, 4);
+            Name = "MainForm";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "SquadHub - Football Manager";
+            Load += MainForm_Load;
+            ((System.ComponentModel.ISupportInitialize)dgvPlayers).EndInit();
+            topPanel.ResumeLayout(false);
+            topPanel.PerformLayout();
+            ResumeLayout(false);
         }
+        private Button btnMedical;
     }
 }

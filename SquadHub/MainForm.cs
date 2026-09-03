@@ -63,5 +63,13 @@ namespace SquadHub
                 }
             }
         }
+
+        private void btnMedical_Click(object sender, EventArgs e)
+        {
+            using (MedicalForm medForm = new MedicalForm())
+            {
+                medForm.ShowDialog();
+            }
+        }
     }
 }
