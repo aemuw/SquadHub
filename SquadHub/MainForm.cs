@@ -4,11 +4,10 @@ using System.Windows.Forms;
 using Microsoft.Data.SqlClient;
 using System.Configuration;
 
-namespace SquadHubApp
+namespace SquadHub
 {
     public partial class MainForm : Form
     {
-        // Зчитуємо рядок підключення з App.config
         private readonly string _connectionString = ConfigurationManager.ConnectionStrings["SquadHubDB"].ConnectionString;
 
         public MainForm()
@@ -18,13 +17,21 @@ namespace SquadHubApp
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            // Автоматично підтягуємо гравців при запуску форми
             LoadPlayersData();
         }
 
         private void btnLoadPlayers_Click(object sender, EventArgs e)
         {
             LoadPlayersData();
+        }
+
+        private void btnAddPlayer_Click(object sender, EventArgs e)
+        {
+            using (AddPlayerForm addForm = new AddPlayerForm())
+            {
+                if (addForm.ShowDialog() == DialogResult.OK)
+                    LoadPlayersData();
+            }
         }
 
         private void LoadPlayersData()
@@ -34,7 +41,6 @@ namespace SquadHubApp
                 try
                 {
                     connection.Open();
-                    // Запит з нормальними назвами колонок для таблиці
                     string query = @"
                         SELECT 
                             PlayerID AS [ID], 

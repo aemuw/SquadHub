@@ -1,10 +1,11 @@
-﻿namespace SquadHubApp
+﻿namespace SquadHub
 {
     partial class MainForm
     {
         private System.ComponentModel.IContainer components = null;
         private System.Windows.Forms.DataGridView dgvPlayers;
         private System.Windows.Forms.Button btnLoadPlayers;
+        private System.Windows.Forms.Button btnAddPlayer;
         private System.Windows.Forms.Panel topPanel;
         private System.Windows.Forms.Label lblTitle;
 
@@ -21,6 +22,7 @@
         {
             this.dgvPlayers = new System.Windows.Forms.DataGridView();
             this.btnLoadPlayers = new System.Windows.Forms.Button();
+            this.btnAddPlayer = new System.Windows.Forms.Button();
             this.topPanel = new System.Windows.Forms.Panel();
             this.lblTitle = new System.Windows.Forms.Label();
 
@@ -30,6 +32,7 @@
 
             // topPanel
             this.topPanel.Controls.Add(this.lblTitle);
+            this.topPanel.Controls.Add(this.btnAddPlayer);
             this.topPanel.Controls.Add(this.btnLoadPlayers);
             this.topPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.topPanel.Location = new System.Drawing.Point(0, 0);
@@ -45,6 +48,16 @@
             this.lblTitle.Size = new System.Drawing.Size(184, 30);
             this.lblTitle.TabIndex = 1;
             this.lblTitle.Text = "Склад Команди";
+
+            // btnAddPlayer
+            this.btnAddPlayer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAddPlayer.Location = new System.Drawing.Point(460, 15);
+            this.btnAddPlayer.Name = "btnAddPlayer";
+            this.btnAddPlayer.Size = new System.Drawing.Size(150, 35);
+            this.btnAddPlayer.TabIndex = 2;
+            this.btnAddPlayer.Text = "Додати гравця";
+            this.btnAddPlayer.UseVisualStyleBackColor = true;
+            this.btnAddPlayer.Click += new System.EventHandler(this.btnAddPlayer_Click);
 
             // btnLoadPlayers
             this.btnLoadPlayers.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -76,6 +89,7 @@
             this.Controls.Add(this.dgvPlayers);
             this.Controls.Add(this.topPanel);
             this.Name = "MainForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SquadHub - Football Manager";
             this.Load += new System.EventHandler(this.MainForm_Load);
 
