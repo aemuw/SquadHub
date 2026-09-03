@@ -1,4 +1,4 @@
-namespace SquadHubApp
+namespace SquadHub
 {
     internal static class Program
     {
