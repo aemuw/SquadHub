@@ -24,9 +24,10 @@
             btnLoadPlayers = new Button();
             btnAddPlayer = new Button();
             topPanel = new Panel();
+            btnReport = new Button();
+            btnMatch = new Button();
             btnMedical = new Button();
             lblTitle = new Label();
-            btnMatch = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvPlayers).BeginInit();
             topPanel.SuspendLayout();
             SuspendLayout();
@@ -73,6 +74,7 @@
             // 
             // topPanel
             // 
+            topPanel.Controls.Add(btnReport);
             topPanel.Controls.Add(btnMatch);
             topPanel.Controls.Add(btnMedical);
             topPanel.Controls.Add(lblTitle);
@@ -85,13 +87,37 @@
             topPanel.Size = new Size(914, 80);
             topPanel.TabIndex = 0;
             // 
+            // btnReport
+            // 
+            btnReport.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnReport.Location = new Point(267, 20);
+            btnReport.Margin = new Padding(3, 4, 3, 4);
+            btnReport.Name = "btnReport";
+            btnReport.Size = new Size(121, 47);
+            btnReport.TabIndex = 5;
+            btnReport.Text = "Статистика";
+            btnReport.UseVisualStyleBackColor = true;
+            btnReport.Click += btnReport_Click;
+            // 
+            // btnMatch
+            // 
+            btnMatch.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnMatch.Location = new Point(394, 21);
+            btnMatch.Margin = new Padding(3, 4, 3, 4);
+            btnMatch.Name = "btnMatch";
+            btnMatch.Size = new Size(121, 47);
+            btnMatch.TabIndex = 4;
+            btnMatch.Text = "Створити матч";
+            btnMatch.UseVisualStyleBackColor = true;
+            btnMatch.Click += btnMatch_Click;
+            // 
             // btnMedical
             // 
             btnMedical.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnMedical.Location = new Point(503, 21);
+            btnMedical.Location = new Point(521, 21);
             btnMedical.Margin = new Padding(3, 4, 3, 4);
             btnMedical.Name = "btnMedical";
-            btnMedical.Size = new Size(101, 47);
+            btnMedical.Size = new Size(83, 47);
             btnMedical.TabIndex = 3;
             btnMedical.Text = "Лазарет";
             btnMedical.UseVisualStyleBackColor = true;
@@ -106,18 +132,6 @@
             lblTitle.Size = new Size(226, 37);
             lblTitle.TabIndex = 1;
             lblTitle.Text = "Склад Команди";
-            // 
-            // btnMatch
-            // 
-            btnMatch.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnMatch.Location = new Point(375, 21);
-            btnMatch.Margin = new Padding(3, 4, 3, 4);
-            btnMatch.Name = "btnMatch";
-            btnMatch.Size = new Size(122, 47);
-            btnMatch.TabIndex = 4;
-            btnMatch.Text = "Створити матч";
-            btnMatch.UseVisualStyleBackColor = true;
-            btnMatch.Click += btnMatch_Click;
             // 
             // MainForm
             // 
@@ -138,5 +152,6 @@
         }
         private Button btnMedical;
         private Button btnMatch;
+        private Button btnReport;
     }
 }

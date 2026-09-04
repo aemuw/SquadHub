@@ -37,7 +37,7 @@ namespace SquadHub
 
         private void EditPlayer_Click(object sender, EventArgs e)
         {
-            if (dgvPlayers.CurrentRow == null) 
+            if (dgvPlayers.CurrentRow == null)
                 return;
 
             int playerId = Convert.ToInt32(dgvPlayers.CurrentRow.Cells["ID"].Value);
@@ -51,7 +51,7 @@ namespace SquadHub
 
         private void DeletePlayer_Click(object sender, EventArgs e)
         {
-            if (dgvPlayers.CurrentRow == null) 
+            if (dgvPlayers.CurrentRow == null)
                 return;
 
             int playerId = Convert.ToInt32(dgvPlayers.CurrentRow.Cells["ID"].Value);
@@ -76,7 +76,7 @@ namespace SquadHub
                         cmd.ExecuteNonQuery();
 
                         MessageBox.Show("Гравця успішно видалено.");
-                        LoadPlayersData(); 
+                        LoadPlayersData();
                     }
                     catch (Exception ex)
                     {
@@ -145,6 +145,14 @@ namespace SquadHub
             using (MatchForm matchForm = new MatchForm())
             {
                 matchForm.ShowDialog();
+            }
+        }
+
+        private void btnReport_Click(object sender, EventArgs e)
+        {
+            using (ReportForm reportForm = new ReportForm())
+            {
+                reportForm.ShowDialog();
             }
         }
     }
