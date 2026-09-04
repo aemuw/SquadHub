@@ -108,26 +108,63 @@ namespace SquadHub
             {
                 try
                 {
-                    connection.Open();
                     string query = @"
-                        SELECT 
-                            PlayerID AS [ID], 
-                            FullName AS [Ім'я гравця], 
-                            PositionCode AS [Позиція], 
-                            OvrRating AS [Рейтинг], 
-                            DOB AS [Дата народження]
-                        FROM Players";
+                SELECT 
+                    PlayerID AS [ID], 
+                    FullName AS [Ім'я гравця], 
+                    PositionCode AS [Позиція], 
+                    OvrRating AS [Рейтинг], 
+                    DOB AS [Дата народження]
+                FROM Players
+                WHERE (@SearchText = '' OR FullName LIKE '%' + @SearchText + '%') 
+                AND (@Position = 'Всі' OR PositionCode = @Position)";
 
-                    using (SqlDataAdapter adapter = new SqlDataAdapter(query, connection))
+                    using (SqlCommand cmd = new SqlCommand(query, connection))
                     {
-                        DataTable dataTable = new DataTable();
-                        adapter.Fill(dataTable);
-                        dgvPlayers.DataSource = dataTable;
+                        string searchText = string.IsNullOrWhiteSpace(txtSearch.Text) ? "" : txtSearch.Text.Trim();
+                        string position = cmbFilter.SelectedItem == null ? "Всі" : cmbFilter.SelectedItem.ToString();
+
+                        cmd.Parameters.AddWithValue("@SearchText", searchText);
+                        cmd.Parameters.AddWithValue("@Position", position);
+
+                        using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
+                        {
+                            DataTable dataTable = new DataTable();
+                            adapter.Fill(dataTable);
+                            dgvPlayers.DataSource = dataTable;
+                        }
                     }
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show($"Помилка підключення до БД:\n{ex.Message}", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show($"Помилка завантаження:\n{ex.Message}");
+                }
+            }
+
+            UpdateFinancialDashboard();
+        }
+
+        private void Filter_Changed(object sender, EventArgs e)
+        {
+            LoadPlayersData();
+        }
+
+        private void UpdateFinancialDashboard()
+        {
+            using (SqlConnection conn = new SqlConnection(_connectionString))
+            {
+                try
+                {
+                    conn.Open();
+                    string query = "SELECT ISNULL(SUM(WageWeekly), 0) FROM Contracts";
+                    SqlCommand cmd = new SqlCommand(query, conn);
+
+                    decimal totalWage = Convert.ToDecimal(cmd.ExecuteScalar());
+                    lblFinance.Text = $"Бюджет зарплат: {totalWage:N0} $ / тиж";
+                }
+                catch (Exception)
+                {
+                    lblFinance.Text = "Бюджет зарплат: Помилка";
                 }
             }
         }
