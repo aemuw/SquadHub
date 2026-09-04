@@ -24,6 +24,7 @@
             btnLoadPlayers = new Button();
             btnAddPlayer = new Button();
             topPanel = new Panel();
+            btnUpdateStats = new Button();
             btnReport = new Button();
             btnMatch = new Button();
             btnMedical = new Button();
@@ -51,7 +52,7 @@
             // btnLoadPlayers
             // 
             btnLoadPlayers.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnLoadPlayers.Location = new Point(742, 20);
+            btnLoadPlayers.Location = new Point(761, 19);
             btnLoadPlayers.Margin = new Padding(3, 4, 3, 4);
             btnLoadPlayers.Name = "btnLoadPlayers";
             btnLoadPlayers.Size = new Size(138, 47);
@@ -63,7 +64,7 @@
             // btnAddPlayer
             // 
             btnAddPlayer.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnAddPlayer.Location = new Point(610, 20);
+            btnAddPlayer.Location = new Point(629, 19);
             btnAddPlayer.Margin = new Padding(3, 4, 3, 4);
             btnAddPlayer.Name = "btnAddPlayer";
             btnAddPlayer.Size = new Size(126, 47);
@@ -74,6 +75,7 @@
             // 
             // topPanel
             // 
+            topPanel.Controls.Add(btnUpdateStats);
             topPanel.Controls.Add(btnReport);
             topPanel.Controls.Add(btnMatch);
             topPanel.Controls.Add(btnMedical);
@@ -87,13 +89,25 @@
             topPanel.Size = new Size(914, 80);
             topPanel.TabIndex = 0;
             // 
+            // btnUpdateStats
+            // 
+            btnUpdateStats.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnUpdateStats.Location = new Point(207, 19);
+            btnUpdateStats.Margin = new Padding(3, 4, 3, 4);
+            btnUpdateStats.Name = "btnUpdateStats";
+            btnUpdateStats.Size = new Size(97, 47);
+            btnUpdateStats.TabIndex = 6;
+            btnUpdateStats.Text = "Ввести результати";
+            btnUpdateStats.UseVisualStyleBackColor = true;
+            btnUpdateStats.Click += btnUpdateStats_Click;
+            // 
             // btnReport
             // 
             btnReport.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnReport.Location = new Point(267, 20);
+            btnReport.Location = new Point(310, 19);
             btnReport.Margin = new Padding(3, 4, 3, 4);
             btnReport.Name = "btnReport";
-            btnReport.Size = new Size(121, 47);
+            btnReport.Size = new Size(97, 47);
             btnReport.TabIndex = 5;
             btnReport.Text = "Статистика";
             btnReport.UseVisualStyleBackColor = true;
@@ -102,7 +116,7 @@
             // btnMatch
             // 
             btnMatch.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnMatch.Location = new Point(394, 21);
+            btnMatch.Location = new Point(413, 20);
             btnMatch.Margin = new Padding(3, 4, 3, 4);
             btnMatch.Name = "btnMatch";
             btnMatch.Size = new Size(121, 47);
@@ -114,7 +128,7 @@
             // btnMedical
             // 
             btnMedical.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnMedical.Location = new Point(521, 21);
+            btnMedical.Location = new Point(540, 20);
             btnMedical.Margin = new Padding(3, 4, 3, 4);
             btnMedical.Name = "btnMedical";
             btnMedical.Size = new Size(83, 47);
@@ -153,5 +167,6 @@
         private Button btnMedical;
         private Button btnMatch;
         private Button btnReport;
+        private Button btnUpdateStats;
     }
 }

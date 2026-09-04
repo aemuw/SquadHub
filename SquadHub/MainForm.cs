@@ -155,5 +155,13 @@ namespace SquadHub
                 reportForm.ShowDialog();
             }
         }
+
+        private void btnUpdateStats_Click(object sender, EventArgs e)
+        {
+            using (UpdateStatsForm statsForm = new UpdateStatsForm())
+            {
+                statsForm.ShowDialog();
+            }
+        }
     }
 }
